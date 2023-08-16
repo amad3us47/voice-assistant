@@ -2,7 +2,6 @@ import openai
 from AppOpener import open
 from AppOpener import close
 import pyttsx3
-from playsound import playsound
 import os
 import pandas as pd
 import time
