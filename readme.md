@@ -1,1 +1,1 @@
-Open terminal and run -- pip3 install -r requirements.txt
+Open terminal and run     pip3 install -r requirements.txt
