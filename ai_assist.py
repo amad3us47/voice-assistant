@@ -12,7 +12,7 @@ newVoiceRate = 130
 engine.setProperty('rate', newVoiceRate)
 
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
@@ -24,11 +24,11 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     return response.choices[0].message["content"]
 
 r = sr.Recognizer()
-
+print("there is limit of free open api 3req/min")
 while True:
     with sr.Microphone() as source:
         print("Hello, I'm Jarvis, your virtual assistant")
-        r.adjust_for_ambient_noise(source, duration=1)
+        r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
         
         try:
@@ -49,16 +49,17 @@ while True:
                 os.system('shutdown -s')
 
             elif "open whatsapp" in text:
-                print("Opening WhatsApp")
                 # Implement your logic to open WhatsApp here
                 open("whatsapp")
 
             elif "close whatsapp" in text:
-                print("Closing WhatsApp")
                 # Implement your logic to close WhatsApp here
                 close("whatsapp")
+
             else:
-                print("Unknown command")
+                respone=get_completion(text)
+                engine.say(respone)
+                engine.runAndWait()
 
         except Exception:
             print("Could not understand audio")
