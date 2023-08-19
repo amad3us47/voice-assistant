@@ -55,12 +55,10 @@ while True:
             elif "close whatsapp" in text:
                 # Implement your logic to close WhatsApp here
                 close("whatsapp")
-
             else:
                 respone=get_completion(text)
                 engine.say(respone)
                 engine.runAndWait()
-
         except Exception:
             print("Could not understand audio")
         except sr.RequestError as e:
